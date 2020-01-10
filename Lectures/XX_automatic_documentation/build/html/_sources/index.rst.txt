@@ -1,0 +1,63 @@
+.. MyFirstDoc documentation master file, created by
+   sphinx-quickstart on Tue Nov  5 11:47:09 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to MyFirstDoc's documentation!
+======================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+Feature scaling
+=====================
+
+Feature scaling is a method used to standardize the range of independent variables or features of data. In data processing, it is also known as data normalization and is generally performed during the data preprocessing step
+
+Since the range of values of raw data varies widely, in some machine learning algorithms, objective functions will not work properly without normalization. For example, the majority of classifiers calculate the distance between two points by the Euclidean distance. If one of the features has a broad range of values, the distance will be governed by this particular feature. Therefore, the range of all features should be normalized so that each feature contributes approximately proportionately to the final distance.
+
+Another reason why feature scaling is applied is that gradient descent converges much faster with feature scaling than without it
+
+Normalization
+=====================
+
+Normalization is the process of converting an actual range of values which a numerical feature can take, into a standard range of values, typically in the interval [−1,1] or [0,1].
+
+For example, suppose the natural range of a particular feature is 350 to 1450. By subtracting 350 from every value of the feature, and dividing the result by 1100, one can normalize those values into the range [0,1].
+
+More generally, the normalization formula looks like this:
+
+$$\overline{x}^{(j)}=\frac{x^{(j)}-m i n^{(j)}}{\max (j)-\min (j)}$$
+
+Why do we normalize? Normalizing the data is not a strict requirement. However, in practice, it can lead to an increased speed of learning
+
+Imagine you have a two-dimensional feature vector. When you update the parameters of $w (1)$  and $w (2)$ , you use partial derivatives of the mean squared error with respect to $w (1)$ and $w (2)$ . If $x (1)$ is in the range [0,1000] and $x (2)$ the range [0,0.0001], then the derivative with respect to a larger feature will dominate the update
+
+Standardization
+=====================
+
+Standardization (or z-score normalization) is the procedure during which the feature values are rescaled so that they have the properties of a standard normal distribution with $\mu = 0$ and $\sigma = 1$, where $\mu$ is the mean (the average value of the feature, averaged over all examples in the dataset) and $\sigma$ is the standard deviation from the mean.
+
+Standard scores (or z-scores) of features are calculated as follows:
+
+$$\hat{x}^{(j)}=\frac{x^{(j)}-\mu^{(j)}}{\sigma^{(j)}}$$
+
+A rule of thumb
+=====================
+
+- unsupervised learning algorithms, in practice, more often benefit from standardization than from normalization;
+- standardization is also preferred for a feature if the values this feature takes are distributed close to a normal distribution (so-called bell curve);
+- again, standardization is preferred for a feature if it can sometimes have extremely high or low values (outliers); this is because normalization will “squeeze” the normal values into a very small range; • in all other cases, normalization is preferable.
+
+Standardize
+=====================
+.. automodule:: standardize
+   :members:
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

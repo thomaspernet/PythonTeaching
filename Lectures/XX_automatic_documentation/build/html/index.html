@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to MyFirstDoc’s documentation! &#8212; MyFirstDoc 0.01 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-myfirstdoc-s-documentation">
+<h1>Welcome to MyFirstDoc’s documentation!<a class="headerlink" href="#welcome-to-myfirstdoc-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="feature-scaling">
+<h1>Feature scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this headline">¶</a></h1>
+<p>Feature scaling is a method used to standardize the range of independent variables or features of data. In data processing, it is also known as data normalization and is generally performed during the data preprocessing step</p>
+<p>Since the range of values of raw data varies widely, in some machine learning algorithms, objective functions will not work properly without normalization. For example, the majority of classifiers calculate the distance between two points by the Euclidean distance. If one of the features has a broad range of values, the distance will be governed by this particular feature. Therefore, the range of all features should be normalized so that each feature contributes approximately proportionately to the final distance.</p>
+<p>Another reason why feature scaling is applied is that gradient descent converges much faster with feature scaling than without it</p>
+</div>
+<div class="section" id="normalization">
+<h1>Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">¶</a></h1>
+<p>Normalization is the process of converting an actual range of values which a numerical feature can take, into a standard range of values, typically in the interval [−1,1] or [0,1].</p>
+<p>For example, suppose the natural range of a particular feature is 350 to 1450. By subtracting 350 from every value of the feature, and dividing the result by 1100, one can normalize those values into the range [0,1].</p>
+<p>More generally, the normalization formula looks like this:</p>
+<p>$$overline{x}^{(j)}=frac{x^{(j)}-m i n^{(j)}}{max (j)-min (j)}$$</p>
+<p>Why do we normalize? Normalizing the data is not a strict requirement. However, in practice, it can lead to an increased speed of learning</p>
+<p>Imagine you have a two-dimensional feature vector. When you update the parameters of $w (1)$  and $w (2)$ , you use partial derivatives of the mean squared error with respect to $w (1)$ and $w (2)$ . If $x (1)$ is in the range [0,1000] and $x (2)$ the range [0,0.0001], then the derivative with respect to a larger feature will dominate the update</p>
+</div>
+<div class="section" id="standardization">
+<h1>Standardization<a class="headerlink" href="#standardization" title="Permalink to this headline">¶</a></h1>
+<p>Standardization (or z-score normalization) is the procedure during which the feature values are rescaled so that they have the properties of a standard normal distribution with $mu = 0$ and $sigma = 1$, where $mu$ is the mean (the average value of the feature, averaged over all examples in the dataset) and $sigma$ is the standard deviation from the mean.</p>
+<p>Standard scores (or z-scores) of features are calculated as follows:</p>
+<p>$$hat{x}^{(j)}=frac{x^{(j)}-mu^{(j)}}{sigma^{(j)}}$$</p>
+</div>
+<div class="section" id="a-rule-of-thumb">
+<h1>A rule of thumb<a class="headerlink" href="#a-rule-of-thumb" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>unsupervised learning algorithms, in practice, more often benefit from standardization than from normalization;</p></li>
+<li><p>standardization is also preferred for a feature if the values this feature takes are distributed close to a normal distribution (so-called bell curve);</p></li>
+<li><p>again, standardization is preferred for a feature if it can sometimes have extremely high or low values (outliers); this is because normalization will “squeeze” the normal values into a very small range; • in all other cases, normalization is preferable.</p></li>
+</ul>
+</div>
+<div class="section" id="module-standardize">
+<span id="standardize"></span><h1>Standardize<a class="headerlink" href="#module-standardize" title="Permalink to this headline">¶</a></h1>
+<p>Standardize Toolbox Functions</p>
+<dl class="function">
+<dt id="standardize.log_scale">
+<code class="sig-prename descclassname">standardize.</code><code class="sig-name descname">log_scale</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/standardize.html#log_scale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#standardize.log_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Log scale Vector</strong></p>
+<p>This return the log values of a given vector</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>X (float):  Vector to be in log.</p>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>int.  The return code::</dt><dd><p>vector</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="standardize.min_max">
+<code class="sig-prename descclassname">standardize.</code><code class="sig-name descname">min_max</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/standardize.html#min_max"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#standardize.min_max" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Normalize Vector</strong></p>
+<p>This return the normalized values of a given vector</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>X (float):  Vector to be Normalize.</p>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>int.  The return code::</dt><dd><p>vector</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="standardize.standardized">
+<code class="sig-prename descclassname">standardize.</code><code class="sig-name descname">standardized</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/standardize.html#standardized"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#standardize.standardized" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Standardize Vector</strong></p>
+<p>This return the standardized values of a given vector</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>X (float):  Vector to be standardize.</p>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>int.  The return code::</dt><dd><p>vector</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">MyFirstDoc</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Thomas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

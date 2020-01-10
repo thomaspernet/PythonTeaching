@@ -1,4 +1,4 @@
-# How to Download and Install Anaconda Windows and Mac 
+# How to Download and Install Anaconda Windows and Mac
 
 In this tutorial, we will explain how to install
 **Anaconda**. You will learn how to use Python with Jupyter. Jupyter
@@ -27,12 +27,12 @@ Windows User:
 -   Launch Jupyter Notebook
 
 
-## Install Anaconda 
+## Install Anaconda
 
 Download [Anaconda](https://www.anaconda.com/download/) version 4.3.1 (for Python 3.6) for the appropriate system.
 
 Anaconda will help you to manage all the libraries required either for
-Python or R. 
+Python or R.
 
 
 
@@ -127,3 +127,63 @@ For Windows user (make sure of the folder before Anaconda3):
 or the path "where anaconda" command gives you
 
 ![](https://github.com/thomaspernet/Tensorflow/blob/master/tensorflow/7_install-tensorflow_files/image004.png?raw=true)
+
+## Download Package --Proxy
+
+Go to environment variable from Windows search box. From here, you can add the paths you need for Anaconda to work properly. The simplest way to add libraries to conda is by adding this proxy in two variables named `http_proxy` and `https_proxy`:
+
+```
+http://USERACCOUNT:PASSWORD@PROXY:8080
+```
+
+To be sure Anaconda works seamlessly with the command line, you should add few other variable in the **Path**.
+
+Open the **Path** variable and add the following (change `USERNAME`):
+
+```
+C:\Users\USERNAME\AppData\Local\Continuum\anaconda3
+C:\Users\USERNAME\AppData\Local\Continuum\anaconda3\Scripts
+C:\Users\USERNAME\AppData\Local\Continuum\anaconda3\Library\bin
+```
+
+If you installed Anaconda in a different folder, use `where conda` to know the path.
+
+You should reboot the machine for the path to be effective.
+
+### From Anaconda
+
+There are two ways to install a package. The first one is through Anadonca while the second way is with Pip. Choose Conda by default, if the library is not available in Conda, then go for pip.
+
+To install a package with Anaconda, you first need to override the current settings. Open Anaconda prompt and paste the following.
+
+```
+conda config --show
+conda config --set remote_read_timeout_secs 1000
+conda config --set ssl_verify false
+```
+
+Try now to install a library.
+
+```
+conda install -c plotly plotly
+```
+
+### From Pip
+
+The second way to download a library is with `pip`. It's straighforward to download a package with `pip`. Go to Google, type the name of the library preceded by `pip`. For instance, if you want to download `plotly`, go to Google and type down `pip plotly`. Goole will point you to this website https://pypi.org/project/plotly/. Go to Anaconda Prompt and paste `pip install plotly` with the following arguments:
+
+```
+--trusted-host=pypi.python.org --trusted-host=pypi.org --trusted-host=files.pythonhosted.org
+```
+
+the full code is:
+
+```
+pip install plotly --trusted-host=pypi.python.org --trusted-host=pypi.org --trusted-host=files.pythonhosted.org
+```
+
+to upgrade a package with pip, use `--upgrade`:
+
+```
+pip install --upgrade plotly --trusted-host=pypi.python.org --trusted-host=pypi.org --trusted-host=files.pythonhosted.org
+```
